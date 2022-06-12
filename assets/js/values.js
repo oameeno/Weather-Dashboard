@@ -1,10 +1,6 @@
 var getWeatherData = function (event) {
 
 
-
-
-
-
     event.preventDefault();
 
 
@@ -25,27 +21,6 @@ var getWeatherData = function (event) {
     let openWeatherApiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + searchByCity + "&appid=32a27c42260b02de3ba5e1466def4861&units=imperial";
     console.log(openWeatherApiUrl);
 
-
-    /*
-    .attr('type', 'text') // Text input type
-    .attr('id', `input-${hourIndex}`) // Create a index of the input for track purposes
-    .attr('hour-index', hourIndex); // To be used to change clors of the input task.
-    
-    
-    var repoEl = document.createElement("a");
-    repoEl.classList = "list-item flex-row justify-space-between align-center";
-    repoEl.setAttribute("href", "./single-repo.html?repo=" + repoName);
-    */
-
-
-    // Clear the element of input and save it to a variable that will display it on the saved cities
-    // Saved cities have will go to local storage
-    // Save it back as the it should be in as first letter capitalized.
-    //citiesSearched.push( searchByCity.charAt(0).toUpperCase() + searchByCity.slice(1) ) ;
-    // citiesSearched.push( searchByCity.charAt(0).toUpperCase() + searchByCity.slice(1) ) ;
-    // console.log("array lenght is " + citiesSearched.length)
-
-
     // Get array from local storage
     let citiesLocalStorage = JSON.parse(localStorage.getItem("savedCities"));
 
@@ -62,25 +37,6 @@ var getWeatherData = function (event) {
         citiesSearched = citiesLocalStorage;
         console.log("Values from local Storage are: " + citiesSearched);
     };
-
-    /*
-    // Move this block to the first reponse of the API as sucessful to add to local storage only then.
-    for (i=0; i < citiesSearched.length; i++) {
-        if (searchByCity === citiesSearched[i].toLowerCase()) {
-            console.log("city " + citiesSearched[i] + "already exist in array")
-            cityExist =1
-            break;
-        } 
-    }
-    //alert(citiesSearched + cityExist)
-    if (cityExist === 0) {
-        alert("city has been pushed" + ( searchByCity.charAt(0).toUpperCase() + searchByCity.slice(1) ));
-        citiesSearched.push( searchByCity.charAt(0).toUpperCase() + searchByCity.slice(1) ) ;
-        localStorage.setItem("savedCities", JSON.stringify(citiesSearched));
-    }
-    */
-
-
 
     fetch(openWeatherApiUrl).then(function (response) {
 
@@ -142,29 +98,6 @@ var getWeatherData = function (event) {
                 // citiesSearched = []; 
 
                 populateSavedCities(); // Second call after a push has been done.
-
-
-
-
-
-                //console.log("lon " + lonNum + "\nlat " + latNum)
-
-                // Get lat, lon from daily and store to be used on UV index
-
-                // https://api.openweathermap.org/data/2.5/onecall?lat=33.441792&lon=-94.037689&exclude=hourly,daily&appid={API key}
-                // let openWeatherApiUVUrl =  "https://api.openweathermap.org/data/2.5/onecall?lat=" + lonNum + "&lon=" + latNum + "&appid=32a27c42260b02de3ba5e1466def4861"
-                // let openWeatherApiUVUrl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lonNum + "&lon=" + latNum + "&appid=32a27c42260b02de3ba5e1466def4861"
-                // console.log(openWeatherApiUVUrl);
-
-                //http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appid={API key}
-
-
-
-                //(0K − 273.15) × 9/5 + 32 
-                //console.log(jsonData.main.temp);
-
-                //http://openweathermap.org/img/wn/04d@2x.png
-
 
             })
 

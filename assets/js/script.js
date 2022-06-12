@@ -351,20 +351,9 @@ var getWeatherData = function (event, cityClicked) {
             // Save to local storage
             localStorage.setItem("savedCities", JSON.stringify(citiesSearched));
         }
-
-        // Pass all the information already gathered for the 5 day forecast and the html build
-        // Pass searchByCity to the second call as capitalized case
         fetchSecondCall(searchByCity.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.substring(1)).join(' '), latNum, lonNum, unixTimeCurrentDay, currentDayIcon, currentTempImperial, currentHumidity, currentMPS, mphWindSpeed);
-
-        // *** After all items have been pushed to array populate the cities in html
-        // There is no functionality to clear cities, but it can be added.
-        // You can also delete the savedCities Key using Chrome Dev Tools.
-        // citiesSearched = []; 
         populateSavedCities(); // Second after a push has been done.
     }).catch(function (error) { // fetch api way of handling network errors.
-        // Notice this `.catch()` getting chained onto the end of the `.then()` method
-        //alert("Unable to connect to OpenWeather");
-        //alert(error.response)
         return;
     });
 
