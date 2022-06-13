@@ -1,5 +1,4 @@
 function getAllMyHtml(data) {
-    // do something
 }
 function fetchSecondCall(latlng) {
     fetch(`url${latLng}`)
@@ -7,7 +6,6 @@ function fetchSecondCall(latlng) {
             return response.json();
         })
         .then(function (secondCallData) {
-            // do something with second call data
             getAllMyHtml(secondCallData);
         });
 }

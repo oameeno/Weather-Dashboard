@@ -15,9 +15,6 @@ var getWeatherData = function (event) {
         return
     }
 
-
-    // Global variable that will take then input of city and converte it to lowercase and pass it as the query to OpenWeather API.
-    // Hardcoded let openWeatherApiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + "scarborough" + "&appid=32a27c42260b02de3ba5e1466def4861";
     let openWeatherApiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + searchByCity + "&appid=32a27c42260b02de3ba5e1466def4861&units=imperial";
     console.log(openWeatherApiUrl);
 
@@ -86,16 +83,9 @@ var getWeatherData = function (event) {
                 // if it is the second city and is not new then add to local storage
                 if (cityExist === 0) {
                     alert("city has been pushed" + (searchByCity.charAt(0).toUpperCase() + searchByCity.slice(1)));
-                    // citiesLocalStorage=[];
-                    //citiesSearched = []; 
-                    // localStorage.setItem("savedCities", JSON.stringify(citiesLocalStorage));
                     citiesSearched.push(searchByCity.charAt(0).toUpperCase() + searchByCity.slice(1));
                     localStorage.setItem("savedCities", JSON.stringify(citiesSearched));
                 }
-
-                // After all items have been pushed to array populate the cities in html
-
-                // citiesSearched = []; 
 
                 populateSavedCities(); // Second call after a push has been done.
 
